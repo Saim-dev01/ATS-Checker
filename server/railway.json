@@ -1,0 +1,5 @@
+{
+  "build": {
+    "startCommand": "node server.js"
+  }
+}
