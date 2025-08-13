@@ -130,7 +130,7 @@ export default function App() {
       <header style={{ width: '100%', background: '#fff', boxShadow: '0 2px 12px #0001', padding: '32px 0 18px 0', marginBottom: 32 }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <img src="/download.jpeg" alt="ATS Resume Checker" style={{ height: 38, marginBottom: 10 }} />
-          <h1 style={{ color: '#232946', fontWeight: 800, fontSize: 36, margin: 0, letterSpacing: 0.5 }}>ATS Resume Checker</h1>
+          <h1 style={{ color: '#232946', fontWeight: 800, fontSize: 36, margin: 0, letterSpacing: 0.5 }}>ResuMate</h1>
           <div style={{ color: '#6b7280', fontSize: 18, marginTop: 8, fontWeight: 500, textAlign: 'center', maxWidth: 600 }}>
             Instantly check your resume for ATS compatibility and get actionable feedback to improve your chances of landing interviews.
           </div>
