@@ -1,18 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import axios from "axios";
 
-/**
- * ResuMate — Enhanced ATS Resume Checker Frontend
- * - Drag & drop + file picker
- * - Job Description keyword extraction (client-side)
- * - Sends extracted keywords to backend as comma-separated "keywords"
- * - Animated loading steps
- * - SVG score gauge + category breakdown bars
- * - Keyword chips (found/missing if API provides; neutral if unknown)
- * - Missing section callouts
- * - Export: Print report / Download JSON
- * - Responsive, accessible, no external UI libs required
- */
 
 export default function App() {
   // Inputs
@@ -60,39 +48,39 @@ export default function App() {
   // Theme
   const colors = dark
     ? {
-        bg: "#0b1220",
-        card: "#111928",
-        text: "#e5e7eb",
-        subtext: "#9ca3af",
-        accent: "#60a5fa",
-        accent2: "#22c55e",
-        warn: "#fbbf24",
-        danger: "#f87171",
-        border: "#1f2937",
-        chipGoodBg: "#052e1a",
-        chipGoodText: "#86efac",
-        chipBadBg: "#331010",
-        chipBadText: "#fca5a5",
-        chipNeutralBg: "#1f2937",
-        chipNeutralText: "#d1d5db",
-      }
+      bg: "#0b1220",
+      card: "#111928",
+      text: "#e5e7eb",
+      subtext: "#9ca3af",
+      accent: "#60a5fa",
+      accent2: "#22c55e",
+      warn: "#fbbf24",
+      danger: "#f87171",
+      border: "#1f2937",
+      chipGoodBg: "#052e1a",
+      chipGoodText: "#86efac",
+      chipBadBg: "#331010",
+      chipBadText: "#fca5a5",
+      chipNeutralBg: "#1f2937",
+      chipNeutralText: "#d1d5db",
+    }
     : {
-        bg: "#f5f7fb",
-        card: "#ffffff",
-        text: "#111827",
-        subtext: "#6b7280",
-        accent: "#3b82f6",
-        accent2: "#22c55e",
-        warn: "#eab308",
-        danger: "#ef4444",
-        border: "#e5e7eb",
-        chipGoodBg: "#ecfdf5",
-        chipGoodText: "#065f46",
-        chipBadBg: "#fef2f2",
-        chipBadText: "#991b1b",
-        chipNeutralBg: "#f3f4f6",
-        chipNeutralText: "#374151",
-      };
+      bg: "#f5f7fb",
+      card: "#ffffff",
+      text: "#111827",
+      subtext: "#6b7280",
+      accent: "#3b82f6",
+      accent2: "#22c55e",
+      warn: "#eab308",
+      danger: "#ef4444",
+      border: "#e5e7eb",
+      chipGoodBg: "#ecfdf5",
+      chipGoodText: "#065f46",
+      chipBadBg: "#fef2f2",
+      chipBadText: "#991b1b",
+      chipNeutralBg: "#f3f4f6",
+      chipNeutralText: "#374151",
+    };
 
   // Drag & Drop
   const [dragOver, setDragOver] = useState(false);
@@ -123,12 +111,12 @@ export default function App() {
     const txt = (jobDesc || "").toLowerCase();
     if (!txt.trim()) return [];
     const stop = new Set([
-      "the","and","for","with","from","that","this","have","has","are","was","were","will","can","all","not","but",
-      "you","your","our","their","they","she","he","him","her","its","in","on","at","to","of","a","an","is","as","by",
-      "or","be","we","i","it","if","so","do","does","did","which","who","whom","about","into","out","up","down","over",
-      "under","more","less","than","then","also","may","such","other","these","those","my","me","us","them","his","hers",
-      "ours","yours","theirs","job","work","role","team","skills","requirements","responsibilities","years","experience",
-      "candidate","strong","using","knowledge","preferred","preferred","etc","must","nice","plus","good","great","best",
+      "the", "and", "for", "with", "from", "that", "this", "have", "has", "are", "was", "were", "will", "can", "all", "not", "but",
+      "you", "your", "our", "their", "they", "she", "he", "him", "her", "its", "in", "on", "at", "to", "of", "a", "an", "is", "as", "by",
+      "or", "be", "we", "i", "it", "if", "so", "do", "does", "did", "which", "who", "whom", "about", "into", "out", "up", "down", "over",
+      "under", "more", "less", "than", "then", "also", "may", "such", "other", "these", "those", "my", "me", "us", "them", "his", "hers",
+      "ours", "yours", "theirs", "job", "work", "role", "team", "skills", "requirements", "responsibilities", "years", "experience",
+      "candidate", "strong", "using", "knowledge", "preferred", "preferred", "etc", "must", "nice", "plus", "good", "great", "best",
     ]);
     const words = txt.match(/[a-z0-9+#.]+/g) || [];
     const freq = {};
@@ -258,8 +246,6 @@ export default function App() {
           <div>{loadingSteps[loadingStep]}</div>
         </div>
       )}
-
-      {/* Header */}
       <header
         style={{
           position: "sticky",
@@ -267,47 +253,73 @@ export default function App() {
           zIndex: 10,
           background: colors.card,
           boxShadow: dark ? "0 1px 0 #111" : "0 1px 0 #e5e7eb",
+          width: "100%",
+          padding: "12px 0" // Adjusted padding
         }}
       >
-       <div
-  style={{
-    width: "100%",
-    maxWidth: "100%",
-    margin: "0 auto",
-    padding: "16px 20px",
-    display: "flex",
-    alignItems: "center",
-    gap: 16,
-  }}
->
-          <img src="/download.jpeg" alt="ResuMate" style={{ height: 34, borderRadius: 6 }} />
-          <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 800, fontSize: 22 }}>ResuMate</div>
-            <div style={{ fontSize: 14, color: colors.subtext, marginTop: 2 }}>
-              ATS resume checker — precise insights, instant feedback.
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "0 24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between", // Changed to space-between
+            gap: 16,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <img src="/download.jpeg" alt="ResuMate" style={{ height: 34, borderRadius: 6 }} />
+            <div>
+              <div style={{ fontWeight: 800, fontSize: 22 }}>ResuMate</div>
+              <div style={{ fontSize: 14, color: colors.subtext, marginTop: 2 }}>
+                Where Your Career Meets the Perfect Resume.
+              </div>
             </div>
           </div>
+
           <button
             onClick={() => setDark((v) => !v)}
-            style={btnStyle(colors)}
+            style={{
+              ...btnStyle(colors),
+              minWidth: "80px", // Set minimum width
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+              marginRight: 60, 
+            }}
             aria-label="Toggle dark mode"
             title="Toggle dark mode"
           >
-            {dark ? "Light" : "Dark"}
+            {dark ? (
+              <>
+                <span>Light</span>
+                <SunIcon />
+              </>
+            ) : (
+              <>
+                <span>Dark</span>
+                <MoonIcon />
+              </>
+            )}
           </button>
         </div>
       </header>
 
       {/* Main */}
-      <main style={{ width: "100%", maxWidth: "100%", margin: "24px auto", padding: "0 20px" }}>
+      <main style={{ width: "100%", maxWidth: "1200px", margin: "24px auto", padding: "0 24px", boxSizing: "border-box" }}>
         {/* Controls */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 1fr",
-            gap: 24,
-          }}
-        >
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)", // Add minmax
+          gap: 70,
+          width: "100%",
+          height: "77vh",
+          marginTop: -10,
+          overflow: "hidden" // Prevent horizontal overflow
+        }}>
           {/* Upload + Actions */}
           <div style={card(colors)}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
@@ -371,7 +383,7 @@ export default function App() {
                 onChange={(e) => setJobDesc(e.target.value)}
                 rows={5}
                 style={{
-                  width: "100%",
+                  width: "95%",
                   resize: "vertical",
                   borderRadius: 10,
                   border: `1px solid ${colors.border}`,
@@ -385,7 +397,7 @@ export default function App() {
               {extractedKeywords.length > 0 && (
                 <div style={{ marginTop: 10 }}>
                   <div style={{ fontSize: 13, color: colors.subtext, marginBottom: 6 }}>
-                    Extracted keywords we’ll try to match:
+                    Extracted keywords we'll try to match:
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                     {extractedKeywords.map((k) => (
@@ -425,12 +437,14 @@ export default function App() {
           <div style={card(colors)}>
             <div style={{ fontWeight: 700, marginBottom: 10 }}>Resume Preview</div>
             {fileUrl ? (
+              // Update iframe styling
               <iframe
                 src={fileUrl}
-                title="Resume PDF Preview"
                 style={{
                   width: "100%",
-                  height: 420,
+                  height: "500px",
+                  maxHeight: "70vh", // Limit height on small screens
+                  maxWidth: "110vh",
                   border: "none",
                   borderRadius: 10,
                   background: dark ? "#0b1220" : "#f1f5f9",
@@ -616,25 +630,45 @@ export default function App() {
 
       {/* Anim keyframes */}
       <style>{`
+        #root {
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding: 0;
+          text-align: left;
+        }
+          
+
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
-        @media (max-width: 980px) {
-          main > div:first-child { grid-template-columns: 1fr; }
-          section { grid-template-columns: 1fr !important; }
-        }
-        @media print {
-          header, textarea, button, input { display: none !important; }
-          iframe { height: 300px; }
-          body { background: #fff !important; }
-        }
+
+       @media (max-width: 1200px) {
+    main > div:first-child { 
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    section { 
+      grid-template-columns: 1fr !important; 
+    }
+    .card {
+      padding: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    main {
+      padding: 0 16px;
+    }
+    .card {
+      padding: 12px;
+    }
+  }
       `}</style>
     </div>
   );
 }
-
-/* ---------- Small components & helpers ---------- */
 
 function ScoreGauge({ score, colors }) {
   const radius = 56;
@@ -713,8 +747,11 @@ function card(colors) {
     background: colors.card,
     borderRadius: 14,
     border: `1px solid ${colors.border}`,
-    padding: 16,
+    padding: 20,
     boxShadow: "0 6px 24px rgba(0,0,0,0.04)",
+    width: "100%",
+    boxSizing: "border-box", // Include padding in width
+    overflow: "hidden" // Prevent content from overflowing
   };
 }
 
@@ -805,3 +842,25 @@ function scoreCopy(score) {
   if (score < 90) return "Good! A few targeted tweaks could lift your score further.";
   return "Excellent! Highly ATS-friendly. Tailor to each job for best results.";
 }
+
+// Add these above your App component
+const SunIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+);
+
